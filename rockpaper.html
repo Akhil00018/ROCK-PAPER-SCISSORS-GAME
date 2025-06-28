@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body{
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+                font-weight: bold;
+                margin:0%;
+                display:flex;
+                flex-direction: column;
+                    align-items:center;
+                   
+            }
+            h1{
+                font-size: 4em;
+            }
+            .mybtn{
+                margin-bottom: 40px;
+            }
+            .mybtn button{
+                font-size: 8rem;
+                margin: 0 20px;
+                height: 200px;
+                cursor: pointer;
+                
+               min-width:190px;
+               border-radius: 400px;
+               background-color: black;
+
+            }
+            .mybtn button:hover{
+                background-color: rgb(51, 53, 53);
+            }
+            .mybtn button:active{
+                background-color: rgb(66, 46, 46);
+            }
+
+            #player,#computer{
+                font-size: 3rem;
+            }
+            #result{
+                font-size: 4.5rem; 
+                margin: 40px;
+            }
+
+            .score{
+                font-size: 2rem;
+                margin:10px ;
+            }
+             #player2{
+                color: hsl(101, 79%, 29%);
+            }
+            #computer2{
+            color: red;
+            }
+            .green{
+                color:greenyellow
+            }
+            .red{
+            color: red;
+            }
+
+        </style>
+    </head>
+    <body>
+       
+
+        <h1>Rock Paper Scissor</h1>
+        <div class="mybtn"> 
+            
+            <button onclick="play('rock')"> 👊</button>
+            <button onclick="play('paper')"> ✋</button>
+            <button onclick="play('scissor')" > ✂️</button>
+        </div>
+       <div id="player">PLAYER :
+        <span id="ak">non</span>
+    
+    </div>
+       <div id="computer">COMPUTER :<span id="chirutha">non</span></div>
+       <div id="result">IT IS</div>
+
+       <div class="score">player score:
+       <span id="player2">0</span>
+        </div>
+        <div class="score"> computer score:
+       <span id="computer2">0</span>
+        </div>
+
+        <script>
+            let mybtn=["rock","paper","scissor"] ; 
+             let player=document.getElementById("player");
+             let computer=document.getElementById("computer");
+             let result=document.getElementById("result");
+             let player2=document.getElementById("player2");
+             let computer2=document.getElementById("computer2");
+             let ak=document.getElementById("ak");
+             let chirutha=document.getElementById("chirutha");
+             let playerscore=0;
+             let computerscore=0;
+             function play(playerchoice){
+                 const comchoice=mybtn[Math.floor(Math.random()*3)];
+                 
+ 
+ 
+                 let res="";
+ 
+                 if(playerchoice === comchoice)
+                   {
+                     res= "IT'S TIE";
+                   }
+                   else{
+ 
+                     switch(playerchoice)
+                     { 
+                      case "rock":
+                         res=(comchoice ==="scissor")?"YOU WIN":"YOU LOOSE";
+                         break;
+                      case "paper":
+                         res=(comchoice ==="rock" )?"YOU WIN":"YOU LOOSE";  
+                         break;
+                        
+                        
+                      case "scissor":
+                         res=(comchoice ==="paper")?"YOU WIN":"YOU LOOSE";
+                         break;
+ 
+                     }
+ 
+                   }
+                   ak.textContent=`${playerchoice}`;    
+                   chirutha.textContent=`${comchoice}`;  
+                  result.textContent=res;
+
+                    result.classList.remove("green","red");
+
+                   switch(res)
+                   {
+                    case "YOU WIN":
+                    result.classList.add("green");
+                    playerscore ++;
+                    player2.textContent=playerscore;
+
+                    break;
+
+                    case "YOU LOOSE":
+                    result.classList.add("red");
+                     computerscore ++;
+
+                     computer2.textContent= computerscore;
+                    break;
+
+                   }
+
+ 
+ 
+ 
+             }
+           
+ 
+         </script>
+ 
+
+   <body> 
+</html>
